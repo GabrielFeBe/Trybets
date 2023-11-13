@@ -2,14 +2,17 @@ using TryBets.Bets.DTO;
 using TryBets.Bets.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using TryBets.Bets.Services;
 
 namespace TryBets.Bets.Repository;
 
 public class BetRepository : IBetRepository
 {
     protected readonly ITryBetsContext _context;
-    public BetRepository(ITryBetsContext context)
+    private readonly IOddService _oddsService;
+    public BetRepository(ITryBetsContext context, IOddService oddService)
     {
+        _oddsService = oddService;
         _context = context;
     }
 
@@ -40,10 +43,8 @@ public class BetRepository : IBetRepository
 
         Bet createdBet = _context.Bets.Include(b => b.Team).Include(b => b.Match).Where(b => b.BetId == newBet.BetId).FirstOrDefault()!;
 
-        if (findedMatch.MatchTeamAId == betRequest.TeamId) findedMatch.MatchTeamAValue += betRequest.BetValue;
-        else findedMatch.MatchTeamBValue += betRequest.BetValue;
-        _context.Matches.Update(findedMatch);
-        _context.SaveChanges();
+
+        _oddsService.UpdateOdd(createdBet.MatchId, createdBet.TeamId, createdBet.BetValue);
 
         return new BetDTOResponse
         {
