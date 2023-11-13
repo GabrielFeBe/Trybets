@@ -25,8 +25,6 @@ public class OddRepository : IOddRepository
         var match = _context.Matches.FirstOrDefault(m => m.MatchId == MatchId)!;
         if (match == null) throw new Exception("Match not founded");
         if (match.MatchTeamAId != TeamId && match.MatchTeamBId != TeamId) throw new Exception("Team is not in this match");
-
-
         if (match.MatchTeamAId == TeamId) match.MatchTeamAValue += BetValueDecimal;
         else match.MatchTeamBValue += BetValueDecimal;
         _context.Matches.Update(match);
