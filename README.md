@@ -28,7 +28,7 @@ dotnet restore
 ## Migration
 
 É necessario executar as migrations em pelo menos um dos projetos, para que o banco de dados seja criado.
-Para isso, dentro da pasta `TrybeBets/src/TryBets`, execute o seguinte comando:
+Para isso, dentro da pasta `Trybets/src/TryBets`, execute o seguinte comando:
 
 ```bash
 dotnet ef migrations add NomeDaMigracao
@@ -42,13 +42,13 @@ dotnet ef database update
 ## Execução
 
 Monolith
-Dentro da pasta `TrybeBets/src/TryBets`, para executar a API, utilize o seguinte comando:
+Dentro da pasta `Trybets/src/TryBets`, para executar a API, utilize o seguinte comando:
 
 ```bash
 dotnet run
 ```
 
-Para executar em microservices, faça o mesmo em cada um dos projetos dentro da pasta `TrybeBets/src`. com exeção do TrybeBets.
+Para executar em microservices, faça o mesmo em cada um dos projetos dentro da pasta `Trybets/src`. com exeção do TrybeBets.
 Também é possivel fazer um Gateway para executar todos os microservices de uma vez, mas isso tera que ser desenvolvido.
 
 ## Contato
