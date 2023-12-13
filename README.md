@@ -54,3 +54,7 @@ Também é possivel fazer um Gateway para executar todos os microservices de uma
 ## Contato
 
 Para entrar em contato com a equipe, envie um e-mail para - <a href='mailto:gabrielferdev@gmail.com'>Gabriel</a>
+
+## Docker
+
+Todas as aplicações de microservices têm Dockerfiles dentro de seus diretórios; no entanto, a de monólito não tem. Voce pode executar os microservicer usando o docker-compose, mas para executar o monólito, voce tera que executar o comando `dotnet run` dentro da pasta `Trybets/src/TryBets`.
